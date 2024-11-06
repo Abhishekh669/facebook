@@ -19,8 +19,8 @@ function Email() {
           </div>
           <div className="w-full h-full p-2 flex flex-col gap-y-8">
             <div className="flex flex-col gap-y-3">
-              <p className="text-[26px] ">Sign in </p>
-              <p className="text-[14px]">to continue to Gmail</p>
+              <p className="text-[26px] text-black ">Sign in </p>
+              <p className="text-[14px] text-black">to continue to Gmail</p>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@ function Email() {
               Forgot email?
             </Link>
           </div>
-          <div className="text-[13px]">
+          <div className="text-[13px] text-black">
             Not your computer? Use Guest mode to sign in privately.{" "}
             <span className="text-blue-700">
               Learn more about using Guest mode
