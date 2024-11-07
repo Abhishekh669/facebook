@@ -3,7 +3,7 @@ import Email from "./_components/Email"
 
 function page() {
   return (
-    <div className='w-[100vw] h-[100vh] py-8 sm:py-0'>
+    <div className='w-[100vw] h-[100vh] py-4 sm:py-0 bg-white'>
       <Email />
 
     </div>

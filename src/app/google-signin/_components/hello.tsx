@@ -1,8 +1,8 @@
 "use client"
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import React, { useState, useEffect } from "react";
 import { CgChevronDown } from "react-icons/cg";
 
 function Email() {
@@ -35,7 +35,7 @@ function Email() {
 
   return (
     <div className="w-full h-full sm:bg-[#f0f4f9] sm:flex sm:flex-col sm:justify-center sm:items-center p-4 sm:p-20">
-      <div className="flex flex-col gap-y-12 sm:bg-white sm:flex-row sm:px-14 sm:py-20  sm:justify-evenly sm:rounded-[30px]">
+      <div className=" flex flex-col gap-y-8 sm:bg-white sm:px-14 sm:py-20 sm:flex sm:justify-evenly sm:rounded-[30px]">
         <div className="w-[70%]">
           <div>
             <Image
@@ -58,7 +58,7 @@ function Email() {
             <input
               type="text"
               placeholder="Email or phone"
-              className="border-[1px] border-black text-black  p-[12px] placeholder:text-gray-700 rounded-[5px] focus:border-[2px] focus:border-blue-600 outline-none"
+              className="border-[1px] border-black text-black p-[12px] placeholder:text-gray-700 rounded-[5px] focus:border-2 focus:border-blue-600 outline-none"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             />

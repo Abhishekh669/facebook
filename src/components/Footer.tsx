@@ -3,10 +3,10 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className='bg-white h-[20vh] hidden md:flex '>
+    <div className='bg-white h-[20%] hidden md:flex '>
      
-      <footer className="w-full flex-none bg-white py-6 hidden md:flex md:flex-col">
-        <ul className="flex flex-wrap justify-center mb-4">
+      <footer className="w-full flex-none  py-6 hidden md:flex md:flex-col">
+        <ul className="flex flex-wrap justify-center ">
           {[
             "ภาษาไทย",
             "English (UK)",
@@ -35,7 +35,7 @@ function Footer() {
             </a>
           </li>
         </ul>
-        <hr className="my-4" />
+        <hr className="my-2" />
         <ul className="flex flex-wrap justify-center ">
           {/* Add other links here */}
           {links.map((link) => (
@@ -46,7 +46,7 @@ function Footer() {
             </li>
           ))}
         </ul>
-        <p className="text-center text-gray-500">Facebook © 2025</p>
+        <p className="text-center bg-white text-gray-500">Facebook © 2025</p>
       </footer>
     </div>
   )
