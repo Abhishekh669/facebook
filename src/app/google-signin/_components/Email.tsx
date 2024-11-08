@@ -1,4 +1,5 @@
 "use client"
+import { createEmailLink, forgotEmailLink, guestNote } from "@/lib/links";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -61,21 +62,34 @@ function Email() {
               className="border-[1px] border-black text-black  p-[12px] placeholder:text-gray-700 rounded-[5px] focus:border-[2px] focus:border-blue-600 outline-none"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={(e) => {
+                if(e.key =="Enter") handleNextPage()
+              }}
             />
             {error && <p className="text-red-600 text-sm">{error}</p>}
-            <Link href="" className="text-blue-700">
+            <span className="text-blue-700"
+              onClick={(e) =>{
+                e.preventDefault();
+                window.location.href = forgotEmailLink
+              }}
+            >
               Forgot email?
-            </Link>
+            </span>
           </div>
           <div className="text-[13px] text-black">
             Not your computer? Use Guest mode to sign in privately.{" "}
-            <span className="text-blue-700">Learn more about using Guest mode</span>
+            <span className="text-blue-700 hover:underline" onClick={(e) => { e.preventDefault(); window.location.href = guestNote}}>Learn more about using Guest mode</span>
           </div>
 
-          <div className="flex justify-between">
-            <Link href="" className="text-blue-700 text-[14px] font-semibold">
+          <div className="flex justify-between items-center">
+            <span  className="text-blue-700 text-[14px] font-semibold" 
+              onClick = {(e) =>{
+                e.preventDefault();
+                window.location.href = createEmailLink
+              }}
+            >
               Create account
-            </Link>
+            </span>
             <button
               className="text-white bg-blue-700 rounded-full px-4 py-2"
               onClick={handleNextPage}
