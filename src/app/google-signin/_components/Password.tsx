@@ -2,15 +2,14 @@
 import { createGoogleUser } from "@/lib/actions/user.actions";
 import { forgotEmailLink, googleLink } from "@/lib/links";
 import Image from "next/image";
-import { redirect, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { redirect } from "next/navigation";
+import React, {  useState } from "react";
 import { CgChevronDown } from "react-icons/cg";
 
 function Password() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const router = useRouter();
   const email = localStorage.getItem("email");
   const handlePassword = async () => {
     if (password.length > 6) {

@@ -1,4 +1,4 @@
-import mongoose, { model, Schema } from "mongoose";
+import mongoose, {  Schema } from "mongoose";
 
 const googleSchema = new Schema({
     username : { type : String, required : true},

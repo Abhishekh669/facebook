@@ -1,7 +1,6 @@
 "use client"
 import { createEmailLink, forgotEmailLink, guestNote } from "@/lib/links";
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { CgChevronDown } from "react-icons/cg";

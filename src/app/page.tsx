@@ -1,5 +1,4 @@
 import Footer from '@/components/Footer'
-import LoginPage from '@/components/LoginPage'
 import MainPage from '@/components/MainPage'
 import React from 'react'
 

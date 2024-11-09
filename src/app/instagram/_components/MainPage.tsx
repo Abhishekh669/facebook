@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image";
 import React from "react";
-import { BsInstagram } from "react-icons/bs";
 import { SiMeta } from "react-icons/si";
 
 function MainPage() {
@@ -23,7 +22,6 @@ function MainPage() {
               src="/instagram.png"
               className="h-16 w-16 sm:hidden "
             />
-            {/* <BsInstagram className="instagram text-[55px] text-instagram-gradient" /> */}
             <p className="hidden sm:flex sm:flex-col sm:text-[23px] text-black">
               <span>Connect with friends and the world </span>
               <span>world around you on Facebook.</span>

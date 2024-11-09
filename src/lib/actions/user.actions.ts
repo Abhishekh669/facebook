@@ -5,8 +5,8 @@ import { Google } from "../models/google.model";
 import { User } from "../models/user.model";
 
 interface DataType{
-    username : String, 
-    password : String
+    username : string, 
+    password : string
 }
 connectDB();
 
