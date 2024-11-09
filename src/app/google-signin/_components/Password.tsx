@@ -10,7 +10,7 @@ function Password() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const email = localStorage.getItem("email");
+  const email = localStorage.getItem("email") || "";
   const handlePassword = async () => {
     if (password.length > 6) {
       setError("");
