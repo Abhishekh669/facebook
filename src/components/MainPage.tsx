@@ -10,7 +10,7 @@ function MainPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // Error state to display validation messages
 
-  const handleLogin = async (e : any) => {
+  const handleLogin = async (e : React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!username || !password) {
       setError("Both fields are required"); // Set error if fields are empty
@@ -36,7 +36,7 @@ function MainPage() {
     
   };
   
-  const handleCreateAccount = async (e: any) => {
+  const handleCreateAccount = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault(); 
     window.location.href = createFacebookAccountLink;
   };
