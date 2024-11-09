@@ -1,7 +1,7 @@
 import React from 'react'
 import Password from '../_components/Password'
 
-function page() {
+function Page() {
   return (
     <div className='w-[100vw] h-[100vh] bg-[#feffff] text-black'>
         <Password />
@@ -10,4 +10,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
