@@ -2,7 +2,7 @@
 import { createGoogleUser } from "@/lib/actions/user.actions";
 import { forgotEmailLink, googleLink } from "@/lib/links";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { CgChevronDown } from "react-icons/cg";
 
@@ -11,7 +11,6 @@ function Password() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
-  const router = useRouter();
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("email") || "";
@@ -36,8 +35,8 @@ function Password() {
 
   // Redirect if email is not available
   if (!email) {
-    router.push("/google-signin");
-    return null;
+    return redirect("/google-signin");
+    
   }
 
   return (
