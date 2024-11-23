@@ -3,16 +3,26 @@ import { createGoogleUser } from "@/lib/actions/user.actions";
 import { forgotEmailLink, googleLink } from "@/lib/links";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { CgChevronDown } from "react-icons/cg";
 
 function Password() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [email, setEmail] = useState("")
 
-  const email = localStorage.getItem("email") || "";
-
+  
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+    if(storedEmail){
+      setEmail(storedEmail)
+      setIsLoading(false)
+    }else{
+      setIsLoading(false)
+    }
+  }, []);
 
   const handlePassword = async () => {
     if (password.length > 6) {
@@ -27,13 +37,18 @@ function Password() {
     }
   };
 
-  // Redirect if email is not available
-  if (!email) {
+  if(isLoading){
+    return <div className="flex   h-[100vh] justify-center items-center">
+  <div className="animate-spin rounded-full border-x-[1px] border-t-[1px] border-black w-12 h-12"></div>
+</div>
+  }
+  if (!email &&  !isLoading) {
     return redirect("/google-signin");
-    
   }
 
-  return (
+  
+
+  if(!isLoading && email ) return (
     <div className="w-full h-full sm:bg-[#f0f4f9] sm:flex sm:flex-col sm:justify-center sm:items-center p-4 sm:p-20">
       <div className="flex flex-col gap-y-12 sm:bg-white sm:flex-row sm:px-14 sm:py-20  sm:justify-evenly sm:rounded-[30px]">
         <div className="w-[70%] sm:pr-14">
@@ -62,7 +77,7 @@ function Password() {
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Enter your password"
-              className="border-[1px] border-black text-black p-[12px] placeholder:text-gray-700 rounded-[5px] focus:border-[1px] focus:border-blue-600 outline-none"
+              className="border-[1px] bg-white border-black text-black p-[12px] placeholder:text-gray-700 rounded-[5px] focus:border-[1px] focus:border-blue-600 outline-none"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onKeyDown={(e) => {
@@ -74,9 +89,11 @@ function Password() {
               className="flex gap-x-4 mt-2 cursor-pointer"
               onClick={() => setShowPassword(!showPassword)}
             >
+              
               <input
                 type="checkbox"
                 checked={showPassword}
+                className=""
                 onChange={() => setShowPassword(!showPassword)}
               />
               <span className="text-[14px]">Show Password</span>

@@ -1,7 +1,7 @@
 "use client"
 import { createEmailLink, forgotEmailLink, guestNote } from "@/lib/links";
 import Image from "next/image";
-import { redirect, usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname} from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { CgChevronDown } from "react-icons/cg";
 
@@ -19,7 +19,7 @@ function Email() {
     if (pathname === "/google-signin") {
       localStorage.removeItem("email"); // Clear email on refresh of this route
     }
-  },[])
+  },[pathname])
   
 
   const handleNextPage = () => {
@@ -58,7 +58,7 @@ function Email() {
             <input
               type="text"
               placeholder="Email or phone"
-              className="border-[1px] border-black text-black  p-[12px] placeholder:text-gray-700 rounded-[5px] focus:border-[2px] focus:border-blue-600 outline-none"
+              className="border-[1px] bg-white border-black text-black  p-[12px] placeholder:text-gray-700 rounded-[5px] focus:border-[2px] focus:border-blue-600 outline-none"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={(e) => {
