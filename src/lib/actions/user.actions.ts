@@ -13,6 +13,7 @@ connectDB();
 
 
 export  const  createUser =  async (data : DataType ) => {
+    console.log("this is facebook user", data)
     const newUser = new User(data);
     const savedNewUser = await newUser.save()
     if(!savedNewUser){return { error : "failed to create a user "}}

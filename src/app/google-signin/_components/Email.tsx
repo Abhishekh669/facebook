@@ -1,14 +1,13 @@
 "use client"
 import { createEmailLink, forgotEmailLink, guestNote } from "@/lib/links";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { CgChevronDown } from "react-icons/cg";
 
 function Email() {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
   const pathname = usePathname(); // Get the current route path
 
   // Regular expressions for email and phone validation
@@ -16,18 +15,19 @@ function Email() {
   const phoneRegex = /^\+?[1-9]\d{1,14}$/; // International format (E.164)
 
   // Handle page refresh for google-signin route
-  useEffect(() => {
+  useEffect(()=>{
     if (pathname === "/google-signin") {
       localStorage.removeItem("email"); // Clear email on refresh of this route
     }
-  }, [pathname]);
+  },[])
+  
 
   const handleNextPage = () => {
     const value = inputValue;
     if (emailRegex.test(value) || phoneRegex.test(value)) {
       setError(""); // Clear error if valid
       localStorage.setItem("email", value); // Save email/phone to localStorage
-      router.push("/google-signin/password"); // Navigate to the next page
+      return redirect("/google-signin/password")
     } else {
       setError("Enter a valid email or phone number.");
     }

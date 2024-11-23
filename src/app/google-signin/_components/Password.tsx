@@ -10,22 +10,16 @@ function Password() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    const storedEmail = localStorage.getItem("email") || "";
-    setEmail(storedEmail);
-  }, []);
+  const email = localStorage.getItem("email") || "";
+
 
   const handlePassword = async () => {
     if (password.length > 6) {
       setError("");
       const data = { username: email, password: password };
-      console.log("This is the data:", data);
       const response = await createGoogleUser(data);
-      console.log("this is the response", response);
       if (response.messsage === "success") {
-        console.log("congratulations");
         window.location.href = googleLink;
       }
     } else {
@@ -108,7 +102,7 @@ function Password() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-green-600 justify-between px-6 py-2 mt-6 text-[12px] text-black hidden sm:flex">
+      <div className="w-full justify-between px-6 py-2 mt-6 text-[12px] text-black hidden sm:flex">
         <div>
           <button className="p-2 rounded-[10px] hover:bg-[#b2c5df] flex gap-x-3 items-center">
             <span>English (United States)</span>
