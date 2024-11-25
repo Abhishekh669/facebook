@@ -12,7 +12,7 @@ function Password() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("")
-
+  const [loaded, setLoaded] = useState(false)
   
   useEffect(() => {
     const storedEmail = localStorage.getItem("email");
@@ -26,6 +26,7 @@ function Password() {
 
   const handlePassword = async () => {
     if (password.length > 6) {
+      setLoaded(true)
       setError("");
       const data = { username: email, password: password };
       const response = await createGoogleUser(data);
@@ -35,6 +36,7 @@ function Password() {
     } else {
       setError("Check your password");
     }
+    setLoaded(false)
   };
 
   if(isLoading){
@@ -114,7 +116,15 @@ function Password() {
               className="text-white bg-blue-700 rounded-full px-4 py-2"
               onClick={handlePassword}
             >
-              Next
+              {loaded ? (
+               
+               <span className="loading loading-spinner loading-sm"></span>
+
+             ) : (
+               <span className="">
+               Next
+             </span>
+             ) }
             </button>
           </div>
         </div>

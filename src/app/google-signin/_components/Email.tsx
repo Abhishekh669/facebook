@@ -8,16 +8,14 @@ import { CgChevronDown } from "react-icons/cg";
 function Email() {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
-  const pathname = usePathname(); // Get the current route path
+  const pathname = usePathname(); 
 
-  // Regular expressions for email and phone validation
   const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
-  const phoneRegex = /^\+?[1-9]\d{1,14}$/; // International format (E.164)
+  const phoneRegex = /^\+?[1-9]\d{1,14}$/; 
 
-  // Handle page refresh for google-signin route
   useEffect(()=>{
     if (pathname === "/google-signin") {
-      localStorage.removeItem("email"); // Clear email on refresh of this route
+      localStorage.removeItem("email"); 
     }
   },[pathname])
   
@@ -25,8 +23,8 @@ function Email() {
   const handleNextPage = () => {
     const value = inputValue;
     if (emailRegex.test(value) || phoneRegex.test(value)) {
-      setError(""); // Clear error if valid
-      localStorage.setItem("email", value); // Save email/phone to localStorage
+      setError("");
+      localStorage.setItem("email", value);
       return redirect("/google-signin/password")
     } else {
       setError("Enter a valid email or phone number.");

