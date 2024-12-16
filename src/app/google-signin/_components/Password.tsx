@@ -1,6 +1,7 @@
 "use client";
 import { createGoogleUser } from "@/lib/actions/user.actions";
 import { forgotEmailLink, googleLink } from "@/lib/links";
+import { LoaderCircleIcon } from "lucide-react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React, {  useEffect, useState } from "react";
@@ -117,11 +118,9 @@ function Password() {
               onClick={handlePassword}
             >
               {loaded ? (
-               
-               <span className="loading loading-spinner loading-sm"></span>
-
-             ) : (
-               <span className="">
+               <LoaderCircleIcon  className=" p-2 animate-spin"/>
+              ) : (
+                <span className="">
                Next
              </span>
              ) }

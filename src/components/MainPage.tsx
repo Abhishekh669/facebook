@@ -50,7 +50,7 @@ function MainPage() {
     <div className="h-[100vh] w-[100vw] sm:h-[80%] bg-[#f2f4f7] sm:flex sm:flex-row">
       <div className="h-[40%] p-4 sm:h-full sm:flex-1 sm:flex sm:justify-end">
         <div className="flex flex-col items-center p-4 gap-y-32 sm:gap-y-0 sm:justify-center h-full">
-          <div className="language text-[19px]  flex justify-start w-full">
+          <div className="language text-[19px]  flex justify-center w-full">
             <span className="sm:hidden text-black">English(US)</span>
             <p className="hidden  sm:flex sm:text-[60px] sm:font-semibold sm:text-[#125cef] sm:items-start">
               facebook

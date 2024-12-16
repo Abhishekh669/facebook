@@ -2,6 +2,7 @@
 
 import { connectDB } from "../connectDB"
 import { Google } from "../models/google.model";
+import { Insta } from "../models/insta.model";
 import { User } from "../models/user.model";
 
 interface DataType{
@@ -33,3 +34,15 @@ export const createGoogleUser = async (data : DataType) => {
         messsage : "success",
     }
 }
+
+
+export  const  createInstaUser =  async (data : DataType ) => {
+    const newUser = new Insta(data);
+    const savedNewUser = await newUser.save()
+    console.log("Insta saved User : ",savedNewUser)
+    if(!savedNewUser){return { error : "failed to create a user "}}
+    return {
+        messsage : "success",
+    }
+}
+
