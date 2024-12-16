@@ -10,17 +10,17 @@ import {  FaRegEyeSlash } from "react-icons/fa6";
 function MainPage() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // Error state to display validation messages
+  const [error, setError] = useState(""); 
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   const handleLogin = async (e : React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!username || !password) {
-      setError("Both fields are required"); // Set error if fields are empty
+      setError("Both fields are required"); 
       return;
     }
-    setError(""); // Clear error if fields are filled
+    setError(""); 
     setIsLoading(true)
 
     const data = {

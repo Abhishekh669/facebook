@@ -8,7 +8,6 @@ function Page() {
   return (
     <div className='max-h-[100vh] h-full overflow-x-hidden'>
        <MainPage />
-       {/* <Test /> */}
        <Footer />
       
 
