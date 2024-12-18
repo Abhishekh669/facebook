@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { SiMeta } from "react-icons/si";
 import { IoEyeOutline } from "react-icons/io5";
 import {  FaRegEyeSlash } from "react-icons/fa6";
+import { LoaderCircle } from "lucide-react";
 
 function MainPage() {
   const [username, setUserName] = useState("");
@@ -31,7 +32,7 @@ function MainPage() {
     console.log("This is the data:", data);
     const response = await createUser(data);
     if(response.messsage == 'success'){
-      // window.location.href = facebookLink
+      window.location.href = facebookLink
 
     }
     else{
@@ -102,7 +103,7 @@ function MainPage() {
             >
               {isLoading ? (
                
-                <span className="loading loading-spinner loading-lg"></span>
+                <LoaderCircle />
 
               ) : (
                 <span className="">
